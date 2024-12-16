@@ -146,9 +146,9 @@ class RemoteUserMiddleware(RemoteUserMiddleware_):
             # User is valid.
             # Update the User's Profile if set by request headers
             if settings.REMOTE_AUTH_USER_FIRST_NAME in request.META:
-                user.first_name = request.META[settings.REMOTE_AUTH_USER_FIRST_NAME]
+                user.first_name = request.META[settings.REMOTE_AUTH_USER_FIRST_NAME].encode("latin-1").decode()
             if settings.REMOTE_AUTH_USER_LAST_NAME in request.META:
-                user.last_name = request.META[settings.REMOTE_AUTH_USER_LAST_NAME]
+                user.last_name = request.META[settings.REMOTE_AUTH_USER_LAST_NAME].encode("latin-1").decode()
             if settings.REMOTE_AUTH_USER_EMAIL in request.META:
                 user.email = request.META[settings.REMOTE_AUTH_USER_EMAIL]
             user.save()
