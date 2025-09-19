@@ -265,7 +265,7 @@ class Module(PrimaryModel, ConfigContextModel):
 
         super().save(*args, **kwargs)
 
-        adopt_components = getattr(self, '_adopt_components', False)
+        adopt_components = getattr(self, '_adopt_components', True)
         disable_replication = getattr(self, '_disable_replication', False)
 
         # We skip adding components if the module is being edited or
